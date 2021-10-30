@@ -21,13 +21,13 @@ app.post('/form', (req, res) => {
   try {
     console.log(req.fields);
 
-    const { firstname, lastname, email } = req.fields;
+    const { firstname, lastname, email, message } = req.fields;
 
     const data = {
       from: `${firstname} ${lastname} <${email}>`,
       to: 'jessy.dev.eto@gmail.com',
       subject: 'Hello jessy',
-      text: 'Ceci est un envoi de mail test depuis mailgun effectué par Jessy 😊',
+      text: message,
     };
 
     mailgun.messages().send(data, (error, body) => {
